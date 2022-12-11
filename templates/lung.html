@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lung</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+  </head>
+  <body>
+    <h2>Lung Cancer Prediction</h2>
+    <p id="prediction">{{prediction_text}}</p>
+    <div class="main-container">
+      <form action="{{ url_for('predict3')}}" method="post">
+        <div class="inp-group">
+          <label for="GENDER">Gender</label>
+          <select name="GENDER" id="GENDER">
+            <option value="1">M</option>
+            <option value="2">F</option></select
+          ><br />
+        </div>
+        <div class="inp-group">
+          <label for="AGE">Age</label>
+          <input type="number" id="AGE" name="AGE" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="SMOKING">Smoking</label>
+          <input type="number" id="SMOKING" name="SMOKING" /><br />
+          <br />
+        </div>
+        <div class="inp-group">
+          <label for="YELLOW_FINGERS">Yellow Fingers</label>
+          <input
+            type="number"
+            id="YELLOW_FINGERS"
+            name="YELLOW_FINGERS"
+          /><br />
+        </div>
+        <div class="inp-group">
+          <label for="ANXIETY">Anxiety</label>
+          <input type="number" id="ANXIETY" name="ANXIETY" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="PEER_PRESSURE">Peer Pressure</label>
+          <input type="number" id="PEER_PRESSURE" name="PEER_PRESSURE" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="CHRONIC_DISEASE">Chronic Disease</label>
+          <input
+            type="number"
+            id="CHRONIC_DISEASE"
+            name="CHRONIC_DISEASE"
+          /><br />
+        </div>
+        <div class="inp-group">
+          <label for="FATIGUE">Fatigue</label>
+          <input type="number" id="FATIGUE" name="FATIGUE" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="ALLERGY">Allergy</label>
+          <input type="number" id="ALLERGY" name="ALLERGY" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="WHEEZING">Wheezing</label>
+          <input type="number" id="WHEEZING" name="WHEEZING" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="ALCOHOL_CONSUMING">Alcohol Consuming</label>
+          <input
+            type="number"
+            id="ALCOHOL_CONSUMING"
+            name="ALCOHOL_CONSUMING"
+          /><br />
+        </div>
+        <div class="inp-group">
+          <label for="COUGHING">Coughing</label>
+          <input type="number" id="COUGHING" name="COUGHING" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="SHORTNESS_OF_BREATH">Shortness of Breath</label>
+          <input
+            type="number"
+            id="SHORTNESS_OF_BREATH"
+            name="SHORTNESS_OF_BREATH"
+          /><br />
+        </div>
+        <div class="inp-group">
+          <label for="SWALLOWING_DIFFICULTY">Swallowing Difficulty</label>
+          <input
+            type="number"
+            id="SWALLOWING_DIFFICULTY"
+            name="SWALLOWING_DIFFICULTY"
+          /><br />
+        </div>
+        <div class="inp-group">
+          <label for="CHEST_PAIN">Chest Pain</label>
+          <input type="number" id="CHEST_PAIN" name="CHEST_PAIN" /><br />
+        </div>
+        <center><button class="btn" type="submit">Submit</button></center>
+      </form>
+    </div>
+   <h3>Description</h3>
+      <p class="symptom-card desc">
+        Lung cancer is a type of cancer that begins in the lungs.
+Lung cancer is the leading cause of cancer deaths worldwide.
+People who smoke have the greatest risk of lung cancer, though lung cancer can also occur in people who have never smoked. The risk of lung cancer increases with the length of time and number of cigarettes you've smoked. If you quit smoking, even after smoking for many years, you can significantly reduce your chances of developing lung cancer.
+      </p>
+      <h3>Signs & Symptoms</h3>
+      <div class="symptom-list">
+        <p class="symptom-card">chest infections</p>
+        <p class="symptom-card">persistent breathlessness.</p>
+        <p class="symptom-card">coughing up blood</p>
+        <p class="symptom-card">long-standing cough</p>
+        <p class="symptom-card">tiredness or lack of energy</p>
+        <p class="symptom-card">ache or pain when breathing or coughing</p>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disease Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <style>
+            @import url("https://fonts.googleapis.com/css2?family=Open Sans:wght@300;400;500;600&display=swap");
+      :root {
+        --background: #0e1118;
+        --pink: #e63d6e;
+        --white: #fff;
+        --blue: rgb(24, 135, 195);
+        --background-light: #ebfbff;
+        --text: #444;
+        --btn: #2b2d7b;
+        --card-bg: #12151c;
+        --box-shadow: rgba(122, 164, 166, 0.8);
+      }
+      body {
+        background: var(--background-light);
+        font-family: "Open Sans", sans-serif;
+      }
+      h2 {
+        font-size: 32px;
+        margin: 40px;
+        text-align: center;
+        color: var(--blue);
+      }
+      h4 {
+        color: var(--btn);
+        font-weight: 400;
+        font-size: 20px;
+        text-align: center;
+      }
+      .main-container {
+        display: flex;
+        flex-direction: column;
+      }
+      .disease_list {
+        width: 85%;
+        display: flex;
+        padding: 40px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+      }
+      .disease_card {
+        margin: 15px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        width: 15%;
+        font-size: 17px;
+        background-color: var(--white);
+        color: var(--text);
+        padding: 25px;
+        box-shadow: 0px 4px 8px var(--box-shadow);
+        transition: 0.3s;
+      }
+      .disease_card i {
+        color: #2b2d7b;
+        font-size:24px;
+      }
+
+      .disease_card:hover {
+        box-shadow: 0px 8px 16px var(--box-shadow);
+      }
+      table,
+      td,
+      th {
+        text-align: left;
+        color: var(--text);
+        text-align: center;
+      }
+      th {
+        color: var(--white);
+        background: #2b2d7b;
+      }
+
+      td {
+        border-right: 1px solid rgb(152, 152, 152);
+        border-left: 1px solid rgb(152, 152, 152);
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 0 auto 40px;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0px 4px 10px var(--box-shadow);
+        background:white;
+      }
+
+      th,
+      td {
+        padding: 12px;
+      }
+      .options {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      form {
+        margin: 0 auto;
+      }
+
+      .inp {
+        padding: 5px 10px;
+        border-radius: 24px;
+        height: 24px;
+        background-color: white;
+        box-shadow: 0px 4px 8px var(--box-shadow);
+        margin: 10px 15px;
+      }
+      .inp input {
+        cursor: pointer;
+      }
+      label {
+        color: var(--text);
+      }
+
+      .btn {
+        color: white;
+        padding: 10px 20px;
+        margin: 20px auto;
+        font-size: 16px;
+        outline: 0;
+        border: 0;
+        background-color: var(--blue);
+      }
+      #prediction {
+        color: var(--card-bg);
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Disease Predictor</h2>
+    <h4>
+      This model predicts the possibility of diseases based on common symptoms.
+    </h4>
+    <form action="/" method="post">
+      <div class="options">
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="receiving_blood_transfusion"
+            value="off"
+            name="receiving_blood_transfusion"
+          />
+          <label for="receiving_blood_transfusion"
+            >Receiving Blood Transfusion</label
+          >
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="red_sore_around_nose"
+            value="off"
+            name="red_sore_around_nose"
+          />
+          <label for="red_sore_around_nose">Red sore around nose</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="abnormal_menstruation"
+            value="off"
+            name="abnormal_menstruation"
+          />
+          <label for="abnormal_menstruation">Abnormal Menstruation</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="continuous_sneezing"
+            value="off"
+            name="continuous_sneezing"
+          />
+          <label for="continuous_sneezing">Continuous Sneezing</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="breathlessness"
+            value="off"
+            name="breathlessness"
+          />
+          <label for="breathlessness">Breathlessness</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="blackheads"
+            value="off"
+            name="blackheads"
+          />
+          <label for="blackheads">Blackheads</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="shivering" value="off" name="shivering" />
+          <label for="shivering">Shivering</label>
+        </div>
+
+        <div class="inp">
+          <input type="checkbox" id="dizziness" value="off" name="dizziness" />
+          <label for="dizziness">Dizziness</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="back_pain" value="off" name="back_pain" />
+          <label for="back_pain">Back Pain</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="unsteadiness"
+            value="off"
+            name="unsteadiness"
+          />
+          <label for="unsteadiness">Unsteadiness</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="yellow_crust_ooze"
+            value="off"
+            name="yellow_crust_ooze"
+          />
+          <label for="yellow_crust_ooze">Yellow Crust Ooze</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="muscle_weakness"
+            value="off"
+            name="muscle_weakness"
+          />
+          <label for="muscle_weakness">Muscle Weakness</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="loss_of_balance"
+            value="off"
+            name="loss_of_balance"
+          />
+          <label for="loss_of_balance">Loss Of Balance</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="chills" value="off" name="chills" />
+          <label for="chills">Chills</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="ulcers_on_tongue"
+            value="off"
+            name="ulcers_on_tongue"
+          />
+          <label for="ulcers_on_tongue">Ulcers On Tongue</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="stomach_bleeding"
+            value="off"
+            name="stomach_bleeding"
+          />
+          <label for="stomach_bleeding">Stomach Bleeding</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="lack_of_concentration"
+            value="off"
+            name="lack_of_concentration"
+          />
+          <label for="lack_of_concentration">Lack of Concentration</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="coma" value="off" name="coma" />
+          <label for="coma">Coma</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="neck_pain" value="off" name="neck_pain" />
+          <label for="neck_pain">Neck Pain</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="weakness_of_one_body_side"
+            value="off"
+            name="weakness_of_one_body_side"
+          />
+          <label for="weakness_of_one_body_side"
+            >Weakness Of One Body Side</label
+          >
+        </div>
+
+        <div class="inp">
+          <input type="checkbox" id="diarrhoea" value="off" name="diarrhoea" />
+          <label for="diarrhoea">Diarrhoea</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="receiving_unsterile_injections"
+            value="off"
+            name="receiving_unsterile_injections"
+          />
+          <label for="receiving_unsterile_injections"
+            >Receiving Unsterile Injections</label
+          >
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="headache" value="off" name="headache" />
+          <label for="headache">Headache</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="family_history"
+            value="off"
+            name="family_history"
+          />
+          <label for="family_history">Family History</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="fast_heart_rate"
+            value="off"
+            name="fast_heart_rate"
+          />
+          <label for="fast_heart_rate">Fast Heart Rate</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="pain_behind_the_eyes"
+            value="off"
+            name="pain_behind_the_eyes"
+          />
+          <label for="pain_behind_the_eyes">Pain Behind The Eyes</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="sweating" value="off" name="sweating" />
+          <label for="sweating">Sweating</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="mucoid_sputum"
+            value="off"
+            name="mucoid_sputum"
+          />
+          <label for="mucoid_sputum">Mucoid Sputum</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="spotting_ urination"
+            value="off"
+            name="spotting_ urination"
+          />
+          <label for="spotting_ urination">Spotting urination</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="sunken_eyes"
+            value="off"
+            name="sunken_eyes"
+          />
+          <label for="sunken_eyes">Sunken eyes</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="dischromic _patches"
+            value="off"
+            name="dischromic _patches"
+          />
+          <label for="dischromic _patches">Dischromic Patches</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="nausea" value="off" name="nausea" />
+          <label for="nausea">Nausea</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="dehydration"
+            value="off"
+            name="dehydration"
+          />
+          <label for="dehydration">Dehydration</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="loss_of_appetite"
+            value="off"
+            name="loss_of_appetite"
+          />
+          <label for="loss_of_appetite">Loss Of Appetite</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="abdominal_pain"
+            value="off"
+            name="abdominal_pain"
+          />
+          <label for="abdominal_pain">Abdominal Pain</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="stomach_pain"
+            value="off"
+            name="stomach_pain"
+          />
+          <label for="stomach_pain">Stomach Pain</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="yellowish_skin"
+            value="off"
+            name="yellowish_skin"
+          />
+          <label for="yellowish_skin">Yellowish Skin</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="altered_sensorium"
+            value="off"
+            name="altered_sensorium"
+          />
+          <label for="altered_sensorium">Altered Sensorium</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="chest_pain"
+            value="off"
+            name="chest_pain"
+          />
+          <label for="chest_pain">Chest Pain</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="muscle_wasting"
+            value="off"
+            name="muscle_wasting"
+          />
+          <label for="muscle_wasting">Muscle Wasting</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="vomiting" value="off" name="vomiting" />
+          <label for="vomiting">Vomiting</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="mild_fever"
+            value="off"
+            name="mild_fever"
+          />
+          <label for="mild_fever">Mild Fever</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="high_fever"
+            value="off"
+            name="high_fever"
+          />
+          <label for="high_fever">High Fever</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="red_spots_over_body"
+            value="off"
+            name="red_spots_over_body"
+          />
+          <label for="red_spots_over_body">Red Spots Over Body</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="dark_urine"
+            value="off"
+            name="dark_urine"
+          />
+          <label for="dark_urine">Dark Urine</label>
+        </div>
+
+        <div class="inp">
+          <input type="checkbox" id="itching" value="off" name="itching" />
+          <label for="itching">Itching</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="yellowing_of_eyes"
+            value="off"
+            name="yellowing_of_eyes"
+          />
+          <label for="yellowing_of_eyes">Yellowing Of Eyes</label>
+        </div>
+
+        <div class="inp">
+          <input type="checkbox" id="fatigue" value="off" name="diarrhoea" />
+          <label for="fatigue">Fatigue</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="joint_pain"
+            value="off"
+            name="joint_pain"
+          />
+          <label for="joint_pain">Joint Pain</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="muscle_pain"
+            value="off"
+            name="muscle_pain"
+          />
+          <label for="muscle_pain">Muscle Pain</label>
+        </div>
+        <!-- <div class="inp">
+          <input
+            type="checkbox"
+            id="continuous_feel_of_urine"
+            value="off"
+            name="continuous_feel_of_urine"
+          />
+          <label for="continuous_feel_of_urine">Continuous Feel Of Urine</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="passage_of_gases"
+            value="off"
+            name="passage_of_gases"
+          />
+          <label for="passage_of_gases">Passage of Gasses</label>
+        </div>
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="visual_disturbances"
+            value="off"
+            name="visual_disturbances"
+          />
+          <label for="visual_disturbances">Visual Disturbances</label>
+        </div>
+
+
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="weakness_in_limbs"
+            value="off"
+            name="weakness_in_limbs"
+          />
+          <label for="weakness_in_limbs">Weakness in limbs</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="rusty_sputum"
+            value="off"
+            name="rusty_sputum"
+          />
+          <label for="rusty_sputum">Rusty Sputum</label>
+        </div>
+        <div class="inp">
+          <input type="checkbox" id="cough" value="off" name="cough" />
+          <label for="cough">Cough</label>
+        </div>
+
+        <div class="inp">
+          <input type="checkbox" id="scurring" value="off" name="scurring" />
+          <label for="scurring">Scurring</label>
+        </div>
+
+        <div class="inp">
+          <input type="checkbox" id="malaise" value="off" name="malaise" />
+          <label for="malaise">Malaise</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="nodal_skin_eruptions"
+            value="off"
+            name="nodal_skin_eruptions"
+          />
+          <label for="nodal_skin_eruptions">Nodal Skin Eruptions</label>
+        </div>
+        <div class="inp">
+          <input
+            type="checkbox"
+            id="weight_loss"
+            value="off"
+            name="weight_loss"
+          />
+          <label for="weight_loss">Weight Loss</label>
+        </div>
+      --></div>
+
+      <center><button class="btn" type="submit">Predict</button></center>
+    </form>
+    <p id="prediction">{{prediction_text}}</p>
+
+    <h2>Medical Diagnosis</h2>
+    <h4>This model predicts the possibility of various chronic diseases.</h4>
+    <div class="disease_list">
+      <a href="{{url_for('predict')}}" class="disease_card">
+        <i class="fa-solid fa-brain"></i>
+        <p>Parkinson's Disease</p>
+      </a>
+      <a href="{{url_for('predict2')}}" class="disease_card">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <p>Heart Failure</p>
+      </a>
+      <a href="{{url_for('predict3')}}" class="disease_card">
+        <i class="fa-solid fa-virus-covid"></i>
+        <p>Lung Cancer</p>
+      </a>
+      <a href="{{url_for('predict4')}}" class="disease_card">
+<i class="fa-solid fa-stethoscope"></i>
+          <p>Diabetes</p>
+      </a>
+      <a href="{{url_for('predict5')}}" class="disease_card">
+<i class="fa-solid fa-pump-medical"></i>
+          <p>Hepetitis</p>
+      </a>
+    </div>
+    <h2>Doctors Near Me!</h2>
+    <table>
+      <tr>
+        <th>Doctor</th>
+        <th>Specialization</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      {% for i in range(0,len)%}
+      <tr>
+        <td>{{doctor[i][0]}}</td>
+        <td>{{doctor[i][1]}}</td>
+        <td>{{doctor[i][2]}}</td>
+        <td>{{doctor[i][3]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

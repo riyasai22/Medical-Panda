@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+  </head>
+  <body>
+    <h2>Diabetes Prediction</h2>
+    <p id="prediction">{{prediction_text}}</p>
+    <div class="main-container">
+      <form action="{{ url_for('predict4')}}" method="post">
+        <div class="inp-group">
+          <label for="Pregnancies">Pregnancies</label>
+          <input  type="number" id="Pregnancies" name="Pregnancies" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Glucose">Glucose</label>
+          <input   type="number" id="Glucose" name="Glucose" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="BloodPressure">BloodPressure</label>
+          <input  type="number" id="BloodPressure" name="BloodPressure" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="SkinThickness">SkinThickness</label>
+          <input  type="number" id="SkinThickness" name="SkinThickness" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Insulin">Insulin	</label>
+          <input  type="number" id="Insulin" name="Insulin" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="BMI">BMI</label>
+          <input step="0.1" type="number" id="BMI" name="BMI" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="DiabetesPedigreeFunction">DiabetesPedigreeFunction</label>
+          <input step="0.001" type="number" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Age">Age</label>
+          <input  type="number" id="Age" name="Age" /><br />
+        </div>
+        <center><button class="btn" type="submit">Predict</button></center>
+      </form>
+    </div>
+      <h3>Description</h3>
+      <p class="symptom-card desc">
+        Diabetes is a chronic (long-lasting) health condition that affects how your body turns food into energy.
+        Your body breaks down most of the food you eat into sugar (glucose) and releases it into your bloodstream.
+        When your blood sugar goes up, it signals your pancreas to release insulin.
+      </p>
+      <h3>Signs & Symptoms</h3>
+      <div class="symptom-list">
+        <p class="symptom-card">Weight loss</p>
+        <p class="symptom-card">Blurry vision.</p>
+        <p class="symptom-card">Extreme fatigue</p>
+        <p class="symptom-card">Tingling Pain</p>
+        <p class="symptom-card">Slow-healing sores</p>
+        <p class="symptom-card">Feeling very thirsty</p>
+        <p class="symptom-card">Feeling very hungry</p>
+      </div>
+  </body>
+
+</html>

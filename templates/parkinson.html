@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parkinsons</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+  </head>
+  <body>
+    <h2>Parkinsons Disease Prediction</h2>
+        <p id="prediction">{{prediction_text}}</p>
+    <div class="main-container">
+      <form action="{{ url_for('predict')}}" method="post">
+        <div class="inp-group">
+          <label for="MDVP:Fo(Hz)">MDVP:Fo(Hz)</label>
+          <input step="0.000001" type="number" id="MDVP:Fo(Hz)" name="MDVP:Fo(Hz)" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:Fhi(Hz)">MDVP:Fhi(Hz)</label>
+          <input step="0.000001"  type="number" id="MDVP:Fhi(Hz)" name="MDVP:Fhi(Hz)" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:Flo(Hz)">MDVP:Flo(Hz)</label>
+          <input step="0.000001" type="number" id="MDVP:Flo(Hz)" name="MDVP:Flo(Hz)" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:Jitter(%)">MDVP:Jitter(%)</label>
+          <input step="0.000001" type="number" id="MDVP:Jitter(%)" name="MDVP:Jitter(%)" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:Jitter(Abs)">MDVP:Jitter(Abs)</label>
+          <input step="0.000001" type="number" id="MDVP:Jitter(Abs)" name="MDVP:Jitter(Abs)" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:RAP">MDVP:RAP</label>
+          <input step="0.000001" type="number" id="MDVP:RAP" name="MDVP:RAP" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:PPQ">MDVP:PPQ</label>
+          <input step="0.000001" type="number" id="MDVP:PPQ" name="MDVP:PPQ" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Jitter:DDP">Jitter:DDP</label>
+          <input step="0.000001"  type="number" id="Jitter:DDP" name="Jitter:DDP" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:Shimmer">MDVP:Shimmer</label>
+          <input step="0.000001"  type="number" id="MDVP:Shimmer" name="MDVP:Shimmer" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:Shimmer(db)">MDVP:Shimmer(db)</label>
+          <input step="0.000001"  type="number" id="MDVP:Shimmer(db)" name="MDVP:Shimmer(db)" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Shimmer:APQ3">Shimmer:APQ3</label>
+          <input step="0.000001"  type="number" id="Shimmer:APQ3" name="Shimmer:APQ3" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Shimmer:APQ5">Shimmer:APQ5</label>
+          <input step="0.000001"  type="number"  id="Shimmer:APQ5" name="Shimmer:APQ5" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="MDVP:APQ">MDVP:APQ</label>
+          <input step="0.000001"  type="number" id="MDVP:APQ" name="MDVP:APQ" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Shimmer:DDA">Shimmer:DDA</label>
+          <input step="0.000001" type="number" id="Shimmer:DDA" name="Shimmer:DDA" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="NHR">NHR</label>
+          <input step="0.000001"  type="number" id="NHR" name="NHR" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="HNR">HNR</label>
+          <input step="0.000001"  type="number" id="HNR" name="HNR" /><br />
+        </div>
+<!--        <div class="inp-group">-->
+<!--          <label for="status">status</label>-->
+<!--          <input type="number" id="status" name="status" /><br />-->
+<!--        </div>-->
+        <div class="inp-group">
+          <label for="RPDE">RPDE</label>
+          <input step="0.000001"  type="number" id="RPDE" name="RPDE" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="DFA">DFA</label>
+          <input step="0.000001"  type="number" id="DFA" name="DFA" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="spread1">spread1</label>
+          <input step="0.000001"  type="number" id="spread1" name="spread1" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="spread2">spread2</label>
+          <input step="0.000001"  type="number" id="spread2" name="spread2" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="D2">D2</label>
+          <input step="0.000001" type="number" id="D2" name="D2" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="PPE">PPE</label>
+          <input step="0.000001"  type="number" id="PPE" name="PPE" /><br />
+        </div>
+        <center><button class="btn" type="submit">Predict</button></center>
+      </form>
+    </div>
+      <h3>Description</h3>
+      <p class="symptom-card desc">
+        Parkinson's disease is caused by a loss of nerve cells in the part of
+        the brain called the substantia nigra. Nerve cells in this part of the
+        brain are responsible for producing a chemical called dopamine.The
+        biggest risk factor for developing Parkinson's is advancing age. The
+        average age of onset is 60. Men are more likely to develop Parkinson's
+        disease than women.
+      </p>
+      <h3>Signs & Symptoms</h3>
+      <div class="symptom-list">
+        <p class="symptom-card">Tremor</p>
+        <p class="symptom-card">Slowed movement</p>
+        <p class="symptom-card">Rigid muscles</p>
+        <p class="symptom-card">Impaired posture and balance</p>
+        <p class="symptom-card">Speech changes</p>
+        <p class="symptom-card">Loss of automatic movements</p>
+        <p class="symptom-card">Writing changes</p>
+      </div>
+  </body>
+</html>

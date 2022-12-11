@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Open Sans:wght@300;400;500;600&display=swap");
+      :root {
+        --background: #0e1118;
+        --pink: #e63d6e;
+        --white: #fff;
+        --blue: rgb(24, 135, 195);
+        --background-light: #ebfbff;
+        --text: #444;
+        --btn: #2b2d7b;
+        --card-bg: #12151c;
+        --box-shadow: rgba(122, 164, 166, 0.8);
+      }
+      body {
+        background: var(--background-light);
+        font-family: "Open Sans", sans-serif;
+      }
+      h2,
+      h3 {
+        font-size: 32px;
+        margin: 40px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--blue);
+        font-weight: 400;
+      }
+      h3 {
+        margin: 40px auto;
+        font-size: 24px;
+        padding: 5px;
+        border-bottom: 2px solid var(--btn);
+        width: fit-content;
+      }
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        color: rgb(31, 65, 166);
+      }
+      p {
+        text-align: center;
+      }
+      form {
+        margin: 0 auto;
+      }
+      .inp-group {
+        width: 600px;
+        height: 32px;
+        position: relative;
+        margin: 15px 5px;
+      }
+      label {
+        color: var(--text);
+        font-weight: 600;
+      }
+      input,
+      select {
+        background: var(--white);
+        font-size: 16px;
+        outline: 0;
+        color: var(--text);
+        width: 200px;
+        height: 32px;
+        border: 0px solid var(--btn);
+        box-shadow: 0px 2px 4px var(--box-shadow);
+        padding: 3px 6px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+      .btn {
+        color: white;
+        padding: 10px 20px;
+        margin: 20px auto;
+        font-size: 16px;
+        outline: 0;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        border: 0;
+        background-color: var(--blue);
+        border-radius: 5px;
+        transition:0.3s;
+        cursor:pointer;
+      }
+      .btn:hover{
+      box-shadow: 0px 4px 8px var(--box-shadow);
+      }
+      #prediction {
+        color: #618fd4;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .symptom-list {
+        width: 60%;
+        margin: 0 auto 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .symptom-card {
+        padding: 10px 20px;
+        background: #fff;
+        box-shadow: 0px 2px 4px var(--box-shadow);
+        margin: 10px;
+        color: var(--text);
+        font-weight: 600;
+        border-radius: 5px;
+      }
+      .desc {
+        width: 60%;
+        margin: 0 auto;
+        line-height: 2;
+      }

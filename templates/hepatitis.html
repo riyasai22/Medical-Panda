@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parkinsons</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+  </head>
+  <body>
+    <h2>Hepatitis C Prediction</h2>
+    <p id="prediction">{{prediction_text}}</p>
+
+    <div class="main-container">
+      <form action="{{ url_for('predict5')}}" method="post">
+        <div class="inp-group">
+          <label for="Age">Age</label>
+          <input type="number" id="Age" name="Age" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="Sex">Sex</label>
+          <input type="number" id="Sex" name="Sex" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="ALB">ALB</label>
+          <input step="0.1" type="number" id="ALB" name="ALB" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="ALP">ALP</label>
+          <input step="0.1" type="number" id="ALP" name="ALP" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="ALT">ALT</label>
+          <input step="0.1" type="number" id="ALT" name="ALT" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="AST">AST</label>
+          <input step="0.1" type="number" id="AST" name="AST" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="BIL">BIL</label>
+          <input step="0.1" type="number" id="BIL" name="BIL" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="CHE">CHE</label>
+          <input step="0.01"  type="number" id="CHE" name="CHE" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="CHOL">CHOL</label>
+          <input step="0.01"  type="number" id="CHOL" name="CHOL" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="CREA">CREA</label>
+          <input step="0.1"  type="number" id="CREA" name="CREA" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="GGT">GGT</label>
+          <input step="0.1"  type="number" id="GGT" name="GGT" /><br />
+        </div>
+        <div class="inp-group">
+          <label for="PROT">PROT</label>
+          <input step="0.1"  type="number"  id="PROT" name="PROT" /><br />
+        </div>
+        <center><button class="btn" type="submit">Predict</button></center>
+      </form>
+    </div>
+  <h3>Description</h3>
+    <p class="symptom-card desc">Hepatitis is inflammation of the liver. Inflammation is swelling that happens when tissues of the body are injured or infected. It can damage your liver. This swelling and damage can affect how well your liver functions.</p>
+    <h3>Signs & Symptoms</h3>
+    <div class="symptom-list">
+      <p class="symptom-card">fever</p>
+      <p class="symptom-card">loss of appetite</p>
+      <p class="symptom-card">nausea/vomitting</p>
+      <p class="symptom-card">abdominal pain</p>
+      <p class="symptom-card">clay colored bowel movements</p>
+      <p class="symptom-card">joint pain</p>
+      <p class="symptom-card">Jaundice</p>
+    </div>
+  </body>
+
+</html>
