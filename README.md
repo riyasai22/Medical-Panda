@@ -22,8 +22,9 @@ Our suggested solution uses trained supervised machine learning algorithms inclu
 
 We also have a feature that provides users the ability to predict diseases based on common symptoms to seek proactive cure in case of possible chronic disorders. The user doesn’t need to traverse different places in order to predict whether he/she has a particular disease or not. 
 
-![image](https://user-images.githubusercontent.com/80235375/206923076-8558332d-a93b-4c5e-9710-053e420400ad.png)
+![image](https://user-images.githubusercontent.com/80235375/206925319-a7ff16ec-ed4b-488f-8805-9b343ba9f916.png)
 
+### Doctor Support
 
 
 ![image](https://user-images.githubusercontent.com/80235375/206923513-106f8a2f-1164-4467-9516-208dcc458f2c.png)
