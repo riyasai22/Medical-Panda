@@ -11,7 +11,7 @@ Our suggested solution uses trained supervised machine learning algorithms inclu
 ![image](https://user-images.githubusercontent.com/80235375/206923494-28c80584-450e-43d1-a191-7ae55f361575.png)
 
 
-## Test heart failure prediction based on diagnostic test results.
+## Heart failure prediction based on diagnostic test results.
 
 ![image](https://user-images.githubusercontent.com/80235375/206924616-8368b215-b20e-402b-b098-39098c1e36c1.png)
 
